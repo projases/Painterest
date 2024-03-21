@@ -1,0 +1,23 @@
+:root {
+    --componentColor: #4a4a4a;
+    --searchColor: rgb(171, 169, 169);
+    --searchHoverColor: rgb(196, 194, 194);
+    --shadowColor: #646cffaa
+}
+
+.search {
+    display: flex;
+    /* flex-basis: 80vw; */
+    color: black;
+    padding: 8px;
+    width: 35vw;
+    min-width: 100px;
+    font-size: 1em;
+    height: 20px;
+    border-radius: 30px;
+    border: 1px none #ccc;
+    background-color: var(--searchColor);
+
+    .search:hover {
+        background-color: var(--searchHoverColor);
+    }

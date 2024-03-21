@@ -1,0 +1,21 @@
+:root {
+    --componentColor: #4a4a4a;
+    --searchColor: rgb(171, 169, 169);
+    --searchHoverColor: rgb(196, 194, 194);
+    --shadowColor: #646cffaa;
+}
+
+.navbar {
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 20px;
+    background-color: var(--componentColor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    margin: 0;
+}
