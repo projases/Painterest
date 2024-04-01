@@ -1,4 +1,6 @@
 import { navbar } from "./src/components/navbar/navbar";
+import { search } from "./src/utils/search";
+import { paint } from "./src/utils/paint";
 // import { imageContainer } from "./src/components/imgGrid/imgGrid";
 
 import "./style.css";
@@ -38,30 +40,44 @@ fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}&count=30`)
 
   .catch((error) => console.error("Error: ", error));
 
-const search = document.querySelector(".search");
-search.addEventListener("input", () => {
-  const query = search.value.toLowerCase();
-  fetch(
-    `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`,
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      // Clear search
-      gallery.innerHTML = "";
+const go = document.querySelector("button");
 
-      data.results.forEach((photo, index) => {
-        const img = document.createElement("img");
-        img.src = photo.urls.regular;
-        img.alt = photo.alt_description;
-        gallery.append(img);
-
-        if ((index + 1) % 3 === 0) {
-          img.classList.add("large");
-        } else if ((index + 1) % 2 === 0) {
-          img.classList.add("medium");
-        } else {
-          img.classList.add("small");
-        }
-      });
-    });
+go.addEventListener("click", async () => {
+  // alert("click");
+  const query = document.querySelector(".search").value.toLowerCase();
+  // Check if query is empty
+  if (query === "") {
+    console.log("Search query is empty. Skipping search.");
+    return;
+  }
+  try {
+    const results = await search(query);
+    paint(results);
+  } catch (error) {
+    console.error("Error: ", error);
+  }
 });
+//     fetch(
+//       `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`,
+//       .then((response) => response.json())
+//       .then((data) => {
+//         // Clear search
+//         gallery.innerHTML = "";
+
+//         data.results.forEach((photo, index) => {
+//           const img = document.createElement("img");
+//           img.src = photo.urls.regular;
+//           img.alt = photo.alt_description;
+//           gallery.append(img);
+
+//           if ((index + 1) % 3 === 0) {
+//             img.classList.add("large");
+//           } else if ((index + 1) % 2 === 0) {
+//             img.classList.add("medium");
+//           } else {
+//             img.classList.add("small");
+//           }
+//         });
+//       });
+//   }
+// });
