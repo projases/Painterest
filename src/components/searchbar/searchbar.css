@@ -8,12 +8,10 @@
 .searchContainer {
     position: relative;
     display: flex;
-    /* border: 2px solid red; */
     width: 35%;
     height: 40px;
     border-radius: 30px;
 }
-
 .clear {
     position: absolute;
     top: 50%;
@@ -21,7 +19,6 @@
     transform: translateY(-50%);
     max-width: 20px;
     z-index: 2;
-    /* transition: opacity 0.3s ease; */
 }
 .clear:hover {
     opacity: 0.7;

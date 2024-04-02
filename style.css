@@ -93,28 +93,23 @@ body {
 }
 
 @media (max-width:600px) {
-    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
 
     .large {
         grid-row-end: span 2;
-        /* Occupies 3 rows */
         grid-column-end: span 2;
-        /* Occupies 1 column */
     }
 
     .medium {
         grid-row-end: span 2;
-        /* Occupies 2 rows */
         grid-column-end: span 2;
-        /* Occupies 1 column */
     }
 
     .small {
         grid-row-end: span 1;
-        /* Occupies 1 row */
         grid-column-end: span 2;
-        /* Occupies 1 column */
-        /* .logo {
+    }
+
+    .logo {
         height: 6em;
         padding: 1.5em;
         will-change: filter;
