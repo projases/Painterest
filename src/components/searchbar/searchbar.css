@@ -2,22 +2,42 @@
     --componentColor: #4a4a4a;
     --searchColor: rgb(171, 169, 169);
     --searchHoverColor: rgb(196, 194, 194);
-    --shadowColor: #646cffaa
+    --shadowColor: #646cffaa;
+}
+
+.searchContainer {
+    position: relative; /* Set position relative */
+    display: flex;
+    /* border: 2px solid red; */
+    width: 35%;
+    height: 40px;
+    border-radius: 30px;
+}
+
+.clear {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    max-width: 20px;
+    z-index: 2;
+    /* transition: opacity 0.3s ease; */
+}
+.clear:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .search {
-    display: flex;
-    /* flex-basis: 80vw; */
+    flex-grow: 1; /* Fill remaining space */
     color: black;
     padding: 8px;
-    width: 35%;
-    min-width: 100px;
+    /* width: calc(100% - 30px); */
     font-size: 1em;
-    height: 20px;
     border-radius: 30px;
     border: 1px none #ccc;
     background-color: var(--searchColor);
-
-    .search:hover {
-        background-color: var(--searchHoverColor);
-    }
+}
+.search:hover {
+    background-color: var(--searchHoverColor);
+}

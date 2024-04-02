@@ -1,6 +1,7 @@
 import { navbar } from "./src/components/navbar/navbar";
 import { search } from "./src/utils/search";
 import { paint } from "./src/utils/paint";
+import { randomQuery } from "./src/utils/randomQuery";
 // import { imageContainer } from "./src/components/imgGrid/imgGrid";
 
 import "./style.css";
@@ -17,37 +18,29 @@ document.body.innerHTML = naviHTML;
 const gallery = document.createElement("div");
 gallery.className = "gallery";
 document.body.appendChild(gallery);
-
-fetch(`https://api.unsplash.com/photos/random?client_id=${accessKey}&count=30`)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(gallery);
-    data.forEach((photo, index) => {
-      const img = document.createElement("img");
-      img.src = photo.urls.regular;
-      img.alt = photo.alt_description;
-      gallery.append(img);
-
-      if ((index + 1) % 3 === 0) {
-        img.classList.add("large");
-      } else if ((index + 1) % 2 === 0) {
-        img.classList.add("medium");
-      } else {
-        img.classList.add("small");
-      }
-    });
-  })
-
-  .catch((error) => console.error("Error: ", error));
+//Primer pintado random
+try {
+  const results = await randomQuery();
+  paint(results);
+} catch (error) {
+  console.error("Error: ", error);
+}
 
 const go = document.querySelector("button");
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", async () => {
+  document.querySelector(".search").value = "";
+  const results = await randomQuery();
+  paint(results);
+});
 
 go.addEventListener("click", async () => {
   // alert("click");
   const query = document.querySelector(".search").value.toLowerCase();
   // Check if query is empty
   if (query === "") {
-    console.log("Search query is empty. Skipping search.");
+    // console.log("Search query is empty. Skipping search.");
     return;
   }
   try {
@@ -57,27 +50,3 @@ go.addEventListener("click", async () => {
     console.error("Error: ", error);
   }
 });
-//     fetch(
-//       `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`,
-//       .then((response) => response.json())
-//       .then((data) => {
-//         // Clear search
-//         gallery.innerHTML = "";
-
-//         data.results.forEach((photo, index) => {
-//           const img = document.createElement("img");
-//           img.src = photo.urls.regular;
-//           img.alt = photo.alt_description;
-//           gallery.append(img);
-
-//           if ((index + 1) % 3 === 0) {
-//             img.classList.add("large");
-//           } else if ((index + 1) % 2 === 0) {
-//             img.classList.add("medium");
-//           } else {
-//             img.classList.add("small");
-//           }
-//         });
-//       });
-//   }
-// });

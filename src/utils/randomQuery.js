@@ -1,13 +1,13 @@
 import { accessKey } from "./accessKey";
 
-export const search = (query) => {
+export const randomQuery = () => {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`,
+      `https://api.unsplash.com/photos/random?client_id=${accessKey}&count=30`,
     )
       .then((response) => response.json())
       .then((data) => {
-        resolve(data.results);
+        resolve(data);
       })
       .catch(reject);
   });
