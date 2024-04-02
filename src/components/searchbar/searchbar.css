@@ -29,7 +29,7 @@
 }
 
 .search {
-    flex-grow: 1; /* Fill remaining space */
+    flex-grow: 1;
     color: black;
     padding: 8px;
     /* width: calc(100% - 30px); */

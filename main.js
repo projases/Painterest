@@ -40,7 +40,6 @@ go.addEventListener("click", async () => {
   const query = document.querySelector(".search").value.toLowerCase();
   // Check if query is empty
   if (query === "") {
-    // console.log("Search query is empty. Skipping search.");
     return;
   }
   try {
