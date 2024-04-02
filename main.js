@@ -2,6 +2,7 @@ import { navbar } from "./src/components/navbar/navbar";
 import { search } from "./src/utils/search";
 import { paint } from "./src/utils/paint";
 import { randomQuery } from "./src/utils/randomQuery";
+// import { randomQuery } from "./unsplash-api";
 // import { imageContainer } from "./src/components/imgGrid/imgGrid";
 
 import "./style.css";
@@ -19,12 +20,14 @@ const gallery = document.createElement("div");
 gallery.className = "gallery";
 document.body.appendChild(gallery);
 //Primer pintado random
-try {
-  const results = await randomQuery();
-  paint(results);
-} catch (error) {
-  console.error("Error: ", error);
-}
+(async () => {
+  try {
+    const results = await randomQuery();
+    paint(results);
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+})();
 
 const go = document.querySelector("button");
 const clear = document.querySelector(".clear");
