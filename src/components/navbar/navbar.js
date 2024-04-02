@@ -14,5 +14,3 @@ export function navbar() {
   `;
   return navbar;
 }
-// ${button({ text: "Home", color: "dark" })}
-// ${button({ text: "Create", color: "light" })
